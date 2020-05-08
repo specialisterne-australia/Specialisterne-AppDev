@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Opal Card Application</title>
+	</head>
+	<body>
+		<h1>Opal Card Application</h1>
+		<form method="post">
+			<h2>Account:</h2>
+
+			<!-- hide this div if an existing account is being used -->
+			<div class="new_account_details">
+
+				<h2>Personal Details</h2>
+				<label for="title">Title:</label>
+				<select name="title" id="title">
+					<option value="Mr">Mr</option>
+					<option value="Ms">Ms</option>
+					<option value="Mss">Mss</option>
+					<option value="Mrs">Mrs</option>
+					<option value="Dr">Dr</option>
+					<option value="Other">Other</option>
+				</select>
+				<label for="other_title">Title:</label>
+				<input type="text" name="other_title" id="other_title" hidden class="required_if_visible">
+				<label for="FirstName">First Name</label>
+				<input type="text" name="first_name" id="first_name" value="" class="required_if_visible">
+				<label for="LastName">Last Name</label>
+				<input type="text" name="last_name" id="last_name" value="" class="required_if_visible">
+				<label for="DoB">Date of Birth</label>
+				<input type="date" name="DoB" id="DoB" class="required_if_visible">
+				<label for="Email">Email Address</label>
+				<input type="text" name="email" id="email">
+				<label for="Phone">Phone</label>
+				<input type="phone" name="phone" id="phone">
+
+				<h3>Residential Address</h3>
+				<!-- this div is to get the indentation the same for both address sections -->
+				<div id="residential_address">
+					<label for="res_address_line_1">Address:</label>
+					<input type="text" name="res_address_line_1" id="res_address_line_1" class="required_if_visible">
+					<input type="text" name="res_address_line_2" id="res_address_line_2">
+					<label for="res_city">City/Suburb</label>
+					<input type="text" name="res_city" id="res_city" class="required_if_visible">
+					<label for="state">State</label>
+					<input type="text" name="res_state" id="res_state" class="required_if_visible">
+					<label for="res_postcode">Postcode</label>
+					<input type="text" name="res_postcode" id="res_postcode" class="required_if_visible">
+					<label for="res_country">Country</label>
+					<select name="res_country" class="select_country, required_if_visible" id="res_country">
+						<!-- presumably there's a way to handle this part with javascript and an existing database? -->
+					</select>
+				</div>
+
+				<h3>Postal Address</h3>
+				<input type="checkbox" name="postal_address_is_residential_address" id="postal_address_is_residential_address" checked>
+				<label for="postal_address_is_residential_address">Same as Residential Address</label>
+				<!-- this div is to get the indentation the same for both address sections -->
+				<div id="postal_address" hidden>
+					<label for="post_address_line_1">Address:</label>
+					<input type="text" name="post_address_line_1" id="post_address_line_1" class="required_if_visible">
+					<input type="text" name="post_address_line_2" id="post_address_line_2">
+					<label for="post_city">City/Suburb</label>
+					<input type="text" name="post_city" id="post_city" class="required_if_visible">
+					<label for="state">State</label>
+					<input type="text" name="post_state" id="post_state" class="required_if_visible">
+					<label for="post_postcode">Postcode</label>
+					<input type="text" name="post_postcode" id="post_postcode" class="required_if_visible">
+					<label for="post_country">Country</label>
+					<select name="post_country" class="select_country, required_if_visible" id="post_country">
+						<!-- presumably there's a way to handle this part with javascript and an existing database? -->
+					</select>
+				</div>
+
+				<h2>Login Details</h2>
+				<label for="new_username">Username:</label>
+				<input type="text" name="username" id="username" class="required_if_visible">
+				<!-- conveniently, calling these "password_1" and "password_2" lets the passoword for existing accounts just be "password" -->
+				<label for="password_1">Username:</label>
+				<input type="password" name="password_1" id="password_1" class="required_if_visible">
+				<label for="password_2">Username:</label>
+				<input type="password" name="password_2" id="password_2" class="required_if_visible">
+				<label for="new_pin">Opal PIN</label>
+				<input type="password" name="pin" id="pin" class="required_if_visible">
+				<!-- embed a captcha here -->
+				<input type="checkbox" name="accept_terms_new_account" value="authorized" id="accept_terms_new_account" class="required_if_visible">
+				<label for="accept_terms_new_account">I accept the 
+					<a href="https://www.opal.com.au/footer/opal-terms-of-use/" target="_blank">Opal Terms of Use</a>, I understand that the 
+					<a href="https://www.opal.com.au/footer/privacy/" target="_blank">Opal Privacy Policy</a> contains important information about how TfNSW handles my personal information, and I confirm that I am ordering/registering this Opal card:
+					<br>(a)    for myself;
+					<br>(b)    for a child who is under the age of 16, and I am their parent or guardian; or
+					<br>(c)    on behalf of someone else over the age of 16, in which case I have their consent to do so (including their consent to disclose any personal information I provide about them).
+				</label>
+
+			</div>
+
+			<h2>Card Nickname</h1>
+			<input type="text" name="nickname" id="nickname">
+			<label for="nickname">
+				(You can give this card a nickname to help distinguish it from any other Opal cards on your account)
+			</label>
+
+			<h2>Concession Entitlement</h2>
+			<!-- Each concession entitlement type has a div of additonal content it reveals -->
+
+			<input type="checkbox" name="concession" value="nsw_seniors" id="nsw_seniors">
+			<label for="nsw_seniors">NSW Seniors Card Holder</label>
+			<div class="entitlement_details" id="nsw_seniors_div" hidden>
+				<label for="nsw_seniors_card_number">Seniors Card Number</label>
+				<input type="text" name="nsw_seniors_card_number" id="nsw_seniors_card_number" class="required_if_visible">
+			</div>
+
+			<input type="checkbox" name="concession" value="act_seniors" id="act_seniors">
+			<label for="act_seniors">ACT Seniors Card Holder</label>
+			<div class="entitlement_details" id="act_seniors_div" hidden>
+				<label for="act_seniors_card_number">Seniors Card Number</label>
+				<input type="text" name="act_seniors_card_number" id="act_seniors_card_number" class="required_if_visible">
+			</div>
+
+			<input type="checkbox" name="concession" value="war_widow" id="war_widow">
+			<label for="war_widow">NSW War Widow</label>
+			<div class="war_widow" id="war_widow_div" hidden>
+				<label for="war_widow_concession_number">War Widower Transport Concession Card Number</label>
+				<input type="text" name="war_widow_concession_number" id="war_widow_concession_number" class="required_if_visible">
+			</div>
+
+			<input type="checkbox" name="concession" value="ex_defence" id="ex_defence">
+			<label for="ex_defence">Ex-Defence with a Disability/DVA pensioner</label>
+			<div class="entitlement_details" id="ex_defence_div" hidden>
+				<label for="dva_file_number">Your DVA file number (using capital letters without any spaces e.g. NNN12345) </label>
+				<input type="text" name="dva_file_number" id="dva_file_number" class="required_if_visible">
+				<label for="uin">UIN</label>
+				<input type="text" name="uin" id="uin">	
+			</div>
+
+			<!-- Pensioners receive a different concession from e.g. newstart recipients but the app should be able to figure which category the user falls in rather than making them do it -->
+			<input type="checkbox" name="concession" value="jobseeker" id="jobseeker">
+			<label for="jobseeker">Pensioner, Registered Jobseeker or Other Approved Centrelink Customer</label>
+			<div class="entitlement_details" id="jobseeker_div" hidden>
+				<label for="centrelink_crn">Centrelink Customer Reference Number (CRN)</label>
+				<input type="text" name="centrelink_crn" id="centrelink_crn" class="required_if_visible">	
+			</div>
+
+			<input type="checkbox" name="concession" value="tafe_student" id="tafe_student">
+			<label for="tafe_student">Tafe NSW Student</label>
+			<div class="entitlement_details" id="tafe_student_div" hidden>
+				<label for="tafe_student_number">TAFE NSW Student Learner Number</label>
+				<input type="text" name="tafe_student_number" id="tafe_student_number" class="required_if_visible">	
+			</div>
+
+			<input type="checkbox" name="concession" value="tertiary_student" id="tertiary_student">
+			<label for="tertiary_student">Other Tertiary Student</label>
+			<div class="entitlement_details" id="tertiary_student_div" hidden>
+				<label for="tertiary_institution">Tertiary Institution</label>
+				<input type="text" name="tertiary_institution" id="tertiary_institution" class="required_if_visible">
+				<label for="tertiary_student_number">Tertiary Student ID Number</label>
+				<input type="text" name="tertiary_student_number" id="tertiary_student_number" class="required_if_visible">	
+			</div>
+
+			<input type="checkbox" name="concession" value="apprentice_trainee" id="apprentice_trainee">
+			<label for="apprentice_trainee">Apprentice or Trainee</label>
+			<div class="entitlement_details" id="apprentice_trainee_div" hidden>
+				<label for="tcid">Training Contract ID (TCID)</label>
+				<input type="text" name="tcid" id="tcid" class="required_if_visible">	
+			</div>
+
+			<input type="checkbox" name="concession" value="asylum_seeker" id="asylum_seeker">
+			<label for="asylum_seeker">Asylum Seeker</label>
+			<div class="entitlement_details" id="asylum_seeker_div" hidden>
+				<label for="designated_agency">Designated Agency</label>
+				<select id="designated_agency" name="designated_agency" class="required_if_visible" hidden>
+					<option value="st_vincent_de_paul" id="st_vincent_de_paul">
+						Asylum Seeker Resource Program (ASO), St Vincent De Paul Society
+					</option>
+					<option value="asylum_seekers_centre" id="asylum_seekers_centre">
+						Asylum Seekers Centre
+					</option>
+					<option value="red_cross" id="red_cross">
+						Australian Red Cross
+					</option>
+					<option value="jesuit" id="jesuit">
+						Jesuit Refugee Service
+					</option>
+					<option value="life_without_barriers" id="life_without_barriers">
+						Life Without Barriers
+					</option>
+					<option value="marist" id="marist">
+						Marist Youth Care
+					</option>
+					<option value="startts" id="startts">
+						NSW Service For the Treatment and Rehabilitaton of Torture and Trauma Survivors (STARTTS)
+					 </option>
+					<option value="serco_srss" id="serco_srss">
+						Serco SRSS
+					</option>
+					<option value="settlement_services_international" id="settlement_services_international">
+						Settlement Services International
+					</option>
+					<option value="refugee_health_service" id="refugee_health_service">
+						NSW Refugee Health Service
+					</option>
+				</select>
+				<input type="checkbox" class="required_if_visible" name="designated_agency_authorization" id="designated_agency_authorization" value="authorized" hidden>
+				<label for="designated_agency_authorization">I authorise the Designated Agency to be my representative.</label>
+				<label for="designated_agency_email">Email Address of Designated Agency</label>
+				<input type="text" name="designated_agency_email" id="designated_agency_email">
+				<label for="asylum_seeker_supporting_documents">Upload supporting document(s)</label>
+				<input type="file" name="asylum_seeker_supporting_documents" id="asylum_seeker_supporting_documents">
+				<p><i>Upload the certification form completed by the Designated Agency to support your application. All applications require this certification in order to be processed.</i></p>
+			</div>
+
+			<!-- reveal this for all concession types, but not when no concession type is selected -->
+			<label for="concession_check_permission">
+				I understand that Transport for NSW will use the information I provide in this application to verify my eligibility for a Concession/Gold Opal card. I understand that Transport for NSW will, from time to time share my personal information with third parties (such as the issuer of my concession entitlement) in line with the
+				<a href="https://www.opal.com.au/footer/privacy/" target="_blank">Opal Privacy Policy</a> for the purpose of verifying my initial and on-going eligibility for a Concession/Gold Opal card.
+				<br>I also understand that Transport for NSW will collect, hold, use and disclose my personal information as described in the Opal Privacy Policy.
+			</label>
+			<input type="checkbox" name="concession_check_permission" value="concession_check_permission" id="concession_check_permission" class="required_if_visible" hidden>
+
+			<p>Fare Type: <span id="card_type">Adult Full Fare</span></p>
+
+			<input type="submit" value="NEXT">
+
+		</form>
+	</body>
+</html>
