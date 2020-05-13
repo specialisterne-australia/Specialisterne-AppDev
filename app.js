@@ -9,7 +9,6 @@ const hostname = 'localhost';
 const port = 3000;
 const file = require('fs');
 const path = require('path');
-const sql = require('mssql')
 
 
 //these are the only file types we will support for now
@@ -62,10 +61,10 @@ function getFile(filePath,res,page404,mimeType){
 };
 
 //a helper function to handle HTTP requests 
-//*** This is where you can change/add your .html page ***
+//*** This is where you can change/add your .html home page ***
 function requestHandler(req, res) {
 	var
-	fileName = path.basename(req.url) || 'form.html',
+	fileName = path.basename(req.url) || 'OpalApplication.html',
 	ext = path.extname(fileName),
 	localFolder = __dirname + '/public/',
 	page404 = localFolder + '404.html';
