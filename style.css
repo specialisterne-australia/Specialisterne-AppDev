@@ -1,1 +1,43 @@
-# TODO: Stylesheet
+body {
+    background-color: #d9f3d9;
+}
+
+Save the file and refresh your page.  Feel free to play with the colour.  Modern systems allow you to "hover" and pick a colour when designing styles.
+
+Once you have played with your background, insert this code into the file and save it.  Feel free to play around and make changes as you see fit.
+
+label {
+    display: block;
+    font-family: "Fira Sans", sans-serif;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+textarea {
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+
+
+body {
+    background-color: #d9f3d9;
+}
+
+h1 {
+    color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+th, td {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+    padding: 8px;
+  }
